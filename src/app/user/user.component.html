@@ -1,18 +1,22 @@
 <div class="container col-md-offset-3 col-md-6">
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary" [ngClass]="{'active': isIndia}">
-            <input type="checkbox" autocomplete="off" (click)="isIndia = !isIndia">{{isIndia ? 'India' : 'USA'}}
+            <input type="checkbox" autocomplete="off" (click)="changeStateAndCountry()">{{isIndia ? 'India' : 'USA'}}
         </label>
         <label class="btn btn-primary" [ngClass]="{'active': isHyd}">
-            <input type="checkbox" autocomplete="off" (click)="isHyd = !isHyd">{{isHyd ? 'Hyderabad' : 'Washington'}}
+            <input type="checkbox" autocomplete="off" (click)="changeStateAndCountry()">{{isHyd ? 'Hyderabad' : 'Washington'}}
         </label>
     </div>
 
     <div>
-        <label for="city">Hyderabad</label>
-        <input id="city" placeholder="Hyderabad" class="form-control">
+        <ng-container *ngIf="facadeService.config?.hyd">
+            <label for="city">Hyderabad</label>
+            <input id="city" placeholder="Hyderabad" class="form-control">
+        </ng-container>
 
-        <label for="cityB">Washington</label>
-        <input id="cityB" placeholder="Washington" class="form-control">
+        <ng-container *ngIf="facadeService.config?.dc">
+            <label for="cityB">Washington</label>
+            <input id="cityB" placeholder="Washington" class="form-control">
+        </ng-container>
     </div>
 </div>

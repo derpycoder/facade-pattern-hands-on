@@ -10,12 +10,22 @@ import { ConstantsService } from "../";
   styleUrls: ["./user.component.css"]
 })
 export class UserComponent implements OnInit {
+  isIndia: boolean;
+  isHyd: boolean;
+
   constructor(
     private facadeService: FacadeService,
     private constantsService: ConstantsService
-  ) {
-    this.constantsService.country = 'in';
-    this.constantsService.state = 'hyd';
+  ) {}
+
+  changeStateAndCountry() {
+    this.isIndia = !this.isIndia;
+    this.isHyd = !this.isHyd;
+    
+    this.constantsService.country = this.isIndia ? "in" : "us";
+    this.constantsService.state = this.isHyd ? "hyd" : "dc";
+
+    this.facadeService.readConfig();
   }
 
   ngOnInit() {

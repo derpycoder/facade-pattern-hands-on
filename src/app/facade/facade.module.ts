@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { facadeFactoryProvider } from "./facade.service.provider";
+import { FacadeService } from "./facade.service";
 import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   declarations: [],
-  providers: [facadeFactoryProvider]
+  providers: [FacadeService]
 })
 export class FacadeModule {}
