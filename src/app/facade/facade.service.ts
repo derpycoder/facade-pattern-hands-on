@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ConstantsService } from '../shared/constants.service';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ConstantsService } from "../shared/constants.service";
 
-import { Config } from './model';
+import { Config } from "./model";
+
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class FacadeService {
@@ -18,18 +20,20 @@ export class FacadeService {
     let state = this.constantsService.state;
 
     if (!country || !state) {
-      country = state = 'null';
+      country = state = "null";
     }
 
     this.http
-      .get(`http://localhost:4200/assets/configs/${country}/${state}.json`)
+      .get(
+        `${environment.url_endpoint}/assets/configs/${country}/${state}.json`
+      )
       .subscribe(
         (data: Config) => {
           console.log(data);
           this.config = data;
         },
         err => {
-          console.log(err, 'Oopsie Poopsie!');
+          console.log(err, "Oopsie Poopsie!");
         }
       );
   }
