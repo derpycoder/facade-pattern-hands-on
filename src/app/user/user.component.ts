@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from '@angular/core';
 
-import { FacadeService } from "../facade/facade.service";
+import { FacadeService } from '../facade/facade.service';
 
-import { ConstantsService } from "../";
+import { ConstantsService } from '../';
 
 @Component({
-  selector: "ak-user",
-  templateUrl: "./user.component.html",
-  styleUrls: ["./user.component.css"]
+  selector: 'ak-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent {
   isIndia: boolean;
   isHyd: boolean;
 
@@ -22,13 +22,7 @@ export class UserComponent implements OnInit {
     this.isIndia = !this.isIndia;
     this.isHyd = !this.isHyd;
 
-    this.constantsService.country = this.isIndia ? "in" : "us";
-    this.constantsService.state = this.isHyd ? "hyd" : "dc";
-
-    this.facadeService.readConfig();
-  }
-
-  ngOnInit() {
-    this.facadeService.readConfig();
+    this.constantsService.country = this.isIndia ? 'in' : 'us';
+    this.constantsService.state = this.isHyd ? 'hyd' : 'dc';
   }
 }
