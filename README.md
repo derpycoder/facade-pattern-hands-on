@@ -59,6 +59,10 @@ var diffConfig = {
 function modifyWhatDiffers(original, diff) {
   var stack = [];
 
+  if (!original || !diff) { 
+    return original;
+  }
+
   stack.push({
     o: original,
     d: diff
