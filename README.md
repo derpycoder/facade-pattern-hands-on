@@ -63,11 +63,11 @@ function modifyWhatDiffers(original, diff) {
     o: original,
     d: diff
   });
-
+  // Runs only for modifications in the diff object
   while (stack.length > 0) {
     let obj = stack.shift();
 
-    for (var key in obj.o) {
+    for (var key in obj.d) {
       if (obj.o.hasOwnProperty(key) && obj.d.hasOwnProperty(key)) {
         if (typeof obj.o[key] === "object") {
           stack.push({
