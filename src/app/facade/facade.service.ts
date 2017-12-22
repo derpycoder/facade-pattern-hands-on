@@ -36,7 +36,7 @@ export class FacadeService {
 
     this.http
       .get(
-        `${environment.url_endpoint}/assets/configs/${country}/${state}.json`
+        `${window.location.href.slice(0, -1)}/assets/configs/${country}/${state}.json`
       )
       .subscribe(
         (data: Config) => {
